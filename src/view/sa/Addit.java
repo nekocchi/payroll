@@ -15,5 +15,18 @@ import javax.swing.border.*;
  * @author EdwardLeonardi
  */
 public class Addit extends JFrame{
+    private int addit;
+    private String fname, lname;
+    private int salary, position, type;
     
+    
+    public Addit(int addit, String fname, String lname, int salary, int position, int type)
+    {
+        
+    }
+    
+    public Addit(int addit)
+    {
+        
+    }
 }

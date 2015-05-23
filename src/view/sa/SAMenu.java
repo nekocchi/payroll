@@ -17,14 +17,9 @@ import view.ViewEmployee;
  * @author EdwardLeonardi
  */
 public class SAMenu extends JFrame {
-    private JButton viewEmpBtn;
-    private JButton addEmpBtn;
-    private JButton payrollBtn;
-    private JButton calcBtn;
-    private JButton logout;
+    private JButton viewEmpBtn, addEmpBtn, payrollBtn, calcBtn, logout;
     private Container contain;
-    private JPanel topPane;
-    private JPanel bottomPane;
+    private JPanel topPane, bottomPane;
     
     public SAMenu()
     {

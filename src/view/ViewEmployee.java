@@ -22,8 +22,7 @@ public class ViewEmployee extends JFrame{
     private JScrollPane scrollTable;
     private ViewEmpTableModel model;
     private JButton back;
-    private JPanel centerPane;
-    private JPanel bottomPane;
+    private JPanel centerPane, bottomPane;
     private Container contain;
     private Object[] options = {"Edit", "Delete"};
     

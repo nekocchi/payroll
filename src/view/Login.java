@@ -13,15 +13,12 @@ import view.sa.SAMenu;
 
 public class Login extends JFrame
 {
-    private JLabel ID;
-    private JLabel password;
+    private JLabel ID, password;
     private JTextField IDField;
     private JPasswordField PWField;
-    private JButton loginButton;
-    private JButton exitButton;
+    private JButton loginButton, exitButton;
     private Container contain;
-    private JPanel centerPane;
-    private JPanel bottomPane;
+    private JPanel centerPane, bottomPane;
     private GridBagConstraints gc;
     
     private static String cNum;
