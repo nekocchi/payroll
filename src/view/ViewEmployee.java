@@ -10,6 +10,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import model.Driver;
+import view.sa.Addit;
 import view.sa.SAMenu;
 import view.table.ViewEmpTableModel;
 
@@ -101,7 +102,7 @@ public class ViewEmployee extends JFrame{
                 
                 if(reply == JOptionPane.YES_OPTION)
                 {
-                    System.out.println("a");
+                    new Addit(2, Driver.employees.get(row));
                 }
                 
                 else if(reply == JOptionPane.NO_OPTION)

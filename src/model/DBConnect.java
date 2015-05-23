@@ -84,6 +84,19 @@ public class DBConnect
         }
     }
     
+    public void addEmployee(String empID, String fName, String lName, int joinDay, int joinMonth, int joinYear, int position, int salary, int type)
+    {
+        try
+        {
+            st.executeUpdate("INSERT INTO Employee VALUES('" + empID + "', '" + fName + "', '" + lName + "', " + joinDay + ", " + joinMonth + ", " + joinYear + ", " + position + ", " + salary + ", " + type + ")");
+        }
+        
+        catch(Exception ex)
+        {
+            System.out.println("Error : " + ex);
+        }
+    }
+    
     public ArrayList<User> getUser()
     {
         ArrayList<User> users = new ArrayList<>();

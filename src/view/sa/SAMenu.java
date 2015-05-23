@@ -9,6 +9,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
+import model.Driver;
 import view.Login;
 import view.ViewEmployee;
 
@@ -118,7 +119,7 @@ public class SAMenu extends JFrame {
             else if(evt.getSource() == addEmpBtn)
             {
                 dispose();
-                //new AddEmployee();
+                new Addit(1);
             }
             
             else if(evt.getSource() == payrollBtn)
