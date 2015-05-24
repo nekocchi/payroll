@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import model.Driver;
+import view.Calculate;
 import view.Login;
 import view.ViewEmployee;
 
@@ -131,7 +131,7 @@ public class SAMenu extends JFrame {
             else if(evt.getSource() == calcBtn)
             {
                 dispose();
-                //new CalcAllowance();
+                new Calculate();
             }
         }
     }

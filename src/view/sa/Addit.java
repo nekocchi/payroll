@@ -12,7 +12,6 @@ import javax.swing.*;
 import javax.swing.border.*;
 import model.Driver;
 import model.Employee;
-import view.Login;
 
 /**
  *
@@ -100,8 +99,8 @@ public class Addit extends JFrame{
         bottomPane.setBorder(new EmptyBorder(10, 10, 10, 10));
         bottomPane.setLayout(new FlowLayout());
         datePane = new JPanel();
-        datePane.setBorder(new EmptyBorder(10, 10, 10, 10));
-        datePane.setLayout(new FlowLayout());
+        datePane.setBorder(new EmptyBorder(10, -3, 10, 10));
+        datePane.setLayout(new FlowLayout(FlowLayout.LEFT));
         
         //Initializing labels
         fNameLab = new JLabel("First Name :");
