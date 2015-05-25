@@ -330,8 +330,16 @@ public class Addit extends JFrame{
             
             else if(evt.getSource() == backBtn)
             {
-                dispose();
-                new SAMenu();
+                if(addit == 1)
+                {
+                    dispose();
+                    new SAMenu();
+                }
+                
+                else
+                {
+                    dispose();
+                }
             }
         }
     }
