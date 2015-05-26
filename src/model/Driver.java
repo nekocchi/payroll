@@ -5,12 +5,9 @@
  */
 package model;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import view.Login;
 import view.Synthetica;
-import view.ViewEmployee;
-import view.sa.SAMenu;
 
 /**
  *

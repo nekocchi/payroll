@@ -19,14 +19,12 @@ import model.Employee;
  * @author EdwardLeonardi
  */
 public class Calculate extends JFrame{
-    private JPanel topPane, centerPane, bottomPane, datePane, absencePane, overtimePane, typePane;
+    private JPanel topPane, centerPane, bottomPane, datePane, absencePane, overtimePane;
     private Container contain;
     private GridBagConstraints gc;
-    private JLabel titleLab, empLab, dateLab, typeLab, absenceLab, overLab, supportLab, overtimeLab, hoursLab, insuranceLab, loanLab;
+    private JLabel titleLab, empLab, dateLab, absenceLab, overLab, supportLab, overtimeLab, hoursLab, insuranceLab, loanLab, mulLab;
     private JComboBox empCB, dayCB, monthCB;
-    private JRadioButton monRB, dailyRB;
-    private ButtonGroup typeBG;
-    private JTextField yearTF, absenceTF, overmonthTF, supportTF, overtimeTF, insuranceTF, loanTF;
+    private JTextField yearTF, absenceTF, overmonthTF, supportTF, overtimeTF, insuranceTF, loanTF, overAmountTF;
     private JButton okBtn, backBtn;
     private ArrayList<String> names;
     
@@ -78,16 +76,12 @@ public class Calculate extends JFrame{
         overtimePane = new JPanel();
         overtimePane.setBorder(new EmptyBorder(10, -3, 10, 10));
         overtimePane.setLayout(new FlowLayout(FlowLayout.LEFT));
-        typePane = new JPanel();
-        typePane.setBorder(new EmptyBorder(10, -3, 10, 10));
-        typePane.setLayout(new FlowLayout(FlowLayout.LEFT));
         
         //initializing labels
         titleLab = new JLabel("Calculate Allowance");
         titleLab.setFont(titleLab.getFont().deriveFont(24.0f));
         empLab = new JLabel("Employee :");
         dateLab = new JLabel("Date :");
-        typeLab = new JLabel("Type :");
         absenceLab = new JLabel("Absence :");
         supportLab = new JLabel("Support :");
         overtimeLab = new JLabel("Overtime :");
@@ -95,6 +89,7 @@ public class Calculate extends JFrame{
         insuranceLab = new JLabel("Insurance :");
         loanLab = new JLabel("Loan :");
         overLab = new JLabel("/");
+        mulLab = new JLabel("x");
         
         names = new ArrayList<>();
         
@@ -108,14 +103,6 @@ public class Calculate extends JFrame{
         empCB.setPreferredSize(new Dimension(300, 30));
         dayCB = new JComboBox(dayCombo);
         monthCB = new JComboBox(monthCombo);
-        
-        //initializing radio button
-        monRB = new JRadioButton("Monthly");
-        dailyRB = new JRadioButton("Daily");
-        typeBG = new ButtonGroup();
-        typeBG.add(monRB);
-        typeBG.add(dailyRB);
-        typeBG.setSelected(monRB.getModel(), true);
         
         //initializing textfields
         yearTF = new JTextField();
@@ -132,6 +119,8 @@ public class Calculate extends JFrame{
         insuranceTF.setPreferredSize(new Dimension(300, 30));
         loanTF = new JTextField();
         loanTF.setPreferredSize(new Dimension(300, 30));
+        overAmountTF = new JTextField();
+        overAmountTF.setPreferredSize(new Dimension(90, 30));
         
         //initializing buttons
         okBtn = new JButton("OK");
@@ -148,11 +137,10 @@ public class Calculate extends JFrame{
         absencePane.add(overLab);
         absencePane.add(overmonthTF);
         
+        overtimePane.add(overAmountTF);
+        overtimePane.add(mulLab);
         overtimePane.add(overtimeTF);
         overtimePane.add(hoursLab);
-        
-        typePane.add(monRB);
-        typePane.add(dailyRB);
         
         //Initialize Grid Bag Constraints
         gc = new GridBagConstraints();
@@ -180,50 +168,42 @@ public class Calculate extends JFrame{
         
         gc.gridx = 0;
         gc.gridy = 2;
-        centerPane.add(typeLab, gc);
-        
-        gc.gridx = 1;
-        gc.gridy = 2;
-        centerPane.add(typePane, gc);
-        
-        gc.gridx = 0;
-        gc.gridy = 3;
         centerPane.add(absenceLab, gc);
         
         gc.gridx = 1;
-        gc.gridy = 3;
+        gc.gridy = 2;
         centerPane.add(absencePane, gc);
         
         gc.gridx = 0;
-        gc.gridy = 4;
+        gc.gridy = 3;
         centerPane.add(supportLab, gc);
         
         gc.gridx = 1;
-        gc.gridy = 4;
+        gc.gridy = 3;
         centerPane.add(supportTF, gc);
         
         gc.gridx = 0;
-        gc.gridy = 5;
+        gc.gridy = 4;
         centerPane.add(overtimeLab, gc);
         
         gc.gridx = 1;
-        gc.gridy = 5;
+        gc.gridy = 4;
         centerPane.add(overtimePane, gc);
         
         gc.gridx = 0;
-        gc.gridy = 6;
+        gc.gridy = 5;
         centerPane.add(insuranceLab, gc);
         
         gc.gridx = 1;
-        gc.gridy = 6;
+        gc.gridy = 5;
         centerPane.add(insuranceTF, gc);
         
         gc.gridx = 0;
-        gc.gridy = 7;
+        gc.gridy = 6;
         centerPane.add(loanLab, gc);
         
         gc.gridx = 1;
-        gc.gridy = 7;
+        gc.gridy = 6;
         centerPane.add(loanTF, gc);
         
         bottomPane.add(okBtn);

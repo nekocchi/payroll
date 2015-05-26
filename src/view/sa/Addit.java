@@ -81,9 +81,9 @@ public class Addit extends JFrame{
         String[] monthCombo = {"January", "Febuary", "March", "April", "May", "June", "July", "August",
                                "September", "October", "November", "December"};
         
-        String[] posCombo = {"Manager", "Accountant", "Packing", "Courier"};
+        String[] posCombo = {"Director", "Manager", "Supervisor", "Administrator", "General Affair", "Store Keeper", "Packing", "Courier", "Office Boy"};
         
-        String[] typeCombo = {"Monthly", "Weekly"};
+        String[] typeCombo = {"Monthly", "Daily"};
         
         //Creating Panel
         contain = getContentPane();
@@ -316,7 +316,7 @@ public class Addit extends JFrame{
                     
                     //update employee to arraylist
                     Driver.employees.get(i).setfName(fNtemp);
-                    Driver.employees.get(i).setlName(fNtemp);
+                    Driver.employees.get(i).setlName(lNtemp);
                     Driver.employees.get(i).getJoinDate().setDate(daytemp);
                     Driver.employees.get(i).getJoinDate().setMonth(monthtemp - 1);
                     Driver.employees.get(i).getJoinDate().setYear(yeartemp - 1900);

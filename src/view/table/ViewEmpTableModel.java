@@ -71,22 +71,47 @@ public class ViewEmpTableModel extends AbstractTableModel {
             
             if(emp.getPosition() == 1)
             {
-                pos = "Manager";
+                pos = "Director";
             }
             
             else if(emp.getPosition() == 2)
             {
-                pos = "Accountant";
+                pos = "Manager";
             }
             
             else if(emp.getPosition() == 3)
             {
-                pos = "Packing";
+                pos = "Supervisor";
             }
             
             else if(emp.getPosition() == 4)
             {
+                pos = "Administrator";
+            }
+            
+            else if(emp.getPosition() == 5)
+            {
+                pos = "General Affair";
+            }
+            
+            else if(emp.getPosition() == 6)
+            {
+                pos = "Store Keeper";
+            }
+            
+            else if(emp.getPosition() == 7)
+            {
+                pos = "Packing";
+            }
+            
+            else if(emp.getPosition() == 8)
+            {
                 pos = "Courier";
+            }
+            
+            else if(emp.getPosition() == 9)
+            {
+                pos = "Office Boy";
             }
             
             value = pos;
