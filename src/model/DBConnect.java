@@ -118,4 +118,39 @@ public class DBConnect
         
         return users;
     }
+    
+    public ArrayList<Record> getRecords()
+    {
+        ArrayList<Record> records = new ArrayList<>();
+        
+        try
+        {
+            rs = st.executeQuery("SELECT * FROM Records");
+            
+            while(rs.next())
+            {
+                records.add(new Record(rs.getString("RecordID"), rs.getString("EmpID"), rs.getInt("day"), rs.getInt("month"), rs.getInt("year"), rs.getInt("absence"), rs.getInt("overmonth"), rs.getInt("support"), rs.getInt("overAmount"), rs.getInt("overtime"), rs.getInt("insurance"), rs.getInt("loan")));
+            }
+        }
+        
+        catch(Exception ex)
+        {
+            System.out.println("Error : " + ex);
+        }
+        
+        return records;
+    }
+    
+    public void addRecord(String RecordID, String EmpID, int day, int month, int year, int absence, int overmonth, int support, int overamount, int overtime, int insurance, int loan)
+    {
+        try
+        {
+            st.executeUpdate("INSERT INTO Records VALUES('" + RecordID + "', '" + EmpID + "', " + day + ", " + month + ", " + year + ", " + absence + ", " + overmonth + ", " + support + ", " + overamount + ", " + overtime + ", " + insurance + ", " + loan + ")");
+        }
+        
+        catch(Exception ex)
+        {
+            System.out.println("Error : " + ex);
+        }
+    }
 }

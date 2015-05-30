@@ -13,6 +13,8 @@ import javax.swing.*;
 import javax.swing.border.*;
 import model.Driver;
 import model.Employee;
+import model.Record;
+import view.sa.SAMenu;
 
 /**
  *
@@ -142,6 +144,12 @@ public class Calculate extends JFrame{
         overtimePane.add(overtimeTF);
         overtimePane.add(hoursLab);
         
+        //Set date to today's date (default)
+        Date now = new Date();
+        yearTF.setText(Integer.toString(now.getYear() + 1900));
+        dayCB.setSelectedIndex(now.getDate() - 1);
+        monthCB.setSelectedIndex(now.getMonth());
+        
         //Initialize Grid Bag Constraints
         gc = new GridBagConstraints();
         gc.fill = GridBagConstraints.HORIZONTAL;
@@ -213,5 +221,71 @@ public class Calculate extends JFrame{
         contain.add(topPane, BorderLayout.NORTH);
         contain.add(centerPane, BorderLayout.CENTER);
         contain.add(bottomPane, BorderLayout.SOUTH);
+        
+        addListener(new handler());
+    }
+    
+    public void addListener(ActionListener listenForBtn)
+    {
+        okBtn.addActionListener(listenForBtn);
+        backBtn.addActionListener(listenForBtn);
+    }
+    
+    public class handler implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent evt)
+        {
+            if(evt.getSource() == okBtn)
+            {
+                String tempID, recID;
+                int daytemp, montemp, yeartemp, abstemp, totemp, supptemp, overamtemp, overtitemp, instemp, loantemp, num;
+                
+                tempID = Driver.employees.get(empCB.getSelectedIndex()).getEmpID();
+                daytemp = dayCB.getSelectedIndex() + 1;
+                montemp = monthCB.getSelectedIndex() + 1;
+                yeartemp = Integer.parseInt(yearTF.getText());
+                abstemp = Integer.parseInt(absenceTF.getText());
+                totemp = Integer.parseInt(overmonthTF.getText());
+                supptemp = Integer.parseInt(supportTF.getText());
+                overamtemp = Integer.parseInt(overAmountTF.getText());
+                overtitemp = Integer.parseInt(overtimeTF.getText());
+                instemp = Integer.parseInt(insuranceTF.getText());
+                loantemp = Integer.parseInt(loanTF.getText());
+                
+                num = Driver.records.size() + 1;
+                
+                //Generate Record ID
+                if(num < 10)
+                {
+                    recID = "R00" + num; 
+                }
+                
+                else if(num >= 10 && num < 100)
+                {
+                    recID = "R0" + num;
+                }
+                
+                else
+                {
+                    recID = "R" + num;
+                }
+                
+                //Add to database and arraylist
+                Driver.database.addRecord(recID, tempID, daytemp, montemp, yeartemp, abstemp, totemp, supptemp, overamtemp, overtitemp, instemp, loantemp);
+                Driver.records.add(new Record(recID, tempID, daytemp, montemp, yeartemp, abstemp, totemp, supptemp, overamtemp, overtitemp, instemp, loantemp));
+                
+                dispose();
+                
+                //DetailFrame
+                new Details(Driver.records.get(Driver.records.size() - 1));
+            }
+            
+            else
+            {
+                dispose();
+                new SAMenu();
+            }
+        }
     }
 }

@@ -18,6 +18,7 @@ public class Driver
     public static DBConnect database;
     public static ArrayList<Employee> employees;
     public static ArrayList<User> users;
+    public static ArrayList<Record> records;
     
     public static void main(String[] args)
     {
@@ -28,7 +29,7 @@ public class Driver
         //initialize global array list
         users = database.getUser();
         employees = database.getEmployee();
-        
+        records = database.getRecords();
         
         //print list of employees
         /*for(Employee emps : employees)
