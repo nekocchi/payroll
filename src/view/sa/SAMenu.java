@@ -11,6 +11,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 import view.Calculate;
 import view.Login;
+import view.Payroll;
 import view.ViewEmployee;
 
 /**
@@ -125,7 +126,7 @@ public class SAMenu extends JFrame {
             else if(evt.getSource() == payrollBtn)
             {
                 dispose();
-                //new Payroll();
+                new Payroll();
             }
             
             else if(evt.getSource() == calcBtn)

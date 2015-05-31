@@ -61,8 +61,8 @@ public class ViewEmpTableModel extends AbstractTableModel {
         else if(columnIndex == 1)
         {
             DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-            String today = formatter.format(emp.getJoinDate());
-            value = today;
+            String join = formatter.format(emp.getJoinDate());
+            value = join;
         }
         
         else if(columnIndex == 2)

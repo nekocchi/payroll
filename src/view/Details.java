@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 import model.Driver;
 import model.Employee;
 import model.Record;
+import view.sa.SAMenu;
 
 /**
  *
@@ -24,12 +25,12 @@ public class Details extends JFrame
     private JPanel centerPane, bottomPane;
     private Container contain;
     private GridBagConstraints gc;
-    private JLabel empLab, emp, dateLab, date, absenceLab, absence, supportLab, support, overtimeLab, overtime, insuranceLab, insurance, loanLab, loan, totalLab, total;
+    private JLabel empLab, emp, dateLab, date, absenceLab, absence, supportLab, support, overtimeLab, overtime, insuranceLab, insurance, loanLab, loan, totalLab, total, salaryLab, salary;
     private JButton okBtn;
     private Record rec;
-    private int allowance;
+    private int allowance, come;
     
-    public Details(Record rec)
+    public Details(Record rec, int come)
     {
         super("Payroll");
         
@@ -38,6 +39,7 @@ public class Details extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         this.rec = rec;
+        this.come = come;
         
         initcomponents();
         
@@ -81,6 +83,8 @@ public class Details extends JFrame
         loanLab.setFont(boldFont);
         totalLab = new JLabel("Total :");
         totalLab.setFont(boldFont);
+        salaryLab = new JLabel("Salary :");
+        salaryLab.setFont(boldFont);
         
         String name = null;
         
@@ -106,6 +110,7 @@ public class Details extends JFrame
         overtime = new JLabel("Rp " + Integer.toString(rec.getOveramount()) + " x " + Integer.toString(rec.getOvertime()) + " Hours = " + Integer.toString(rec.getOveramount() * rec.getOvertime()));
         insurance = new JLabel("Rp " + Integer.toString(rec.getInsurance()));
         loan = new JLabel("Rp " + Integer.toString(rec.getLoan()));
+        salary = new JLabel("Rp " + Integer.toString(allowance));
         
         //Calculate Total
         int tot;
@@ -139,50 +144,58 @@ public class Details extends JFrame
         
         gc.gridx = 0;
         gc.gridy = 2;
-        centerPane.add(absenceLab, gc);
+        centerPane.add(salaryLab, gc);
         
         gc.gridx = 1;
         gc.gridy = 2;
+        centerPane.add(salary, gc);
+        
+        gc.gridx = 0;
+        gc.gridy = 3;
+        centerPane.add(absenceLab, gc);
+        
+        gc.gridx = 1;
+        gc.gridy = 3;
         centerPane.add(absence, gc);
         
         gc.gridx = 0;
-        gc.gridy = 3;
+        gc.gridy = 4;
         centerPane.add(supportLab, gc);
         
         gc.gridx = 1;
-        gc.gridy = 3;
+        gc.gridy = 4;
         centerPane.add(support, gc);
         
         gc.gridx = 0;
-        gc.gridy = 4;
+        gc.gridy = 5;
         centerPane.add(overtimeLab, gc);
         
         gc.gridx = 1;
-        gc.gridy = 4;
+        gc.gridy = 5;
         centerPane.add(overtime, gc);
         
         gc.gridx = 0;
-        gc.gridy = 5;
+        gc.gridy = 6;
         centerPane.add(insuranceLab, gc);
         
         gc.gridx = 1;
-        gc.gridy = 5;
+        gc.gridy = 6;
         centerPane.add(insurance, gc);
         
         gc.gridx = 0;
-        gc.gridy = 6;
+        gc.gridy = 7;
         centerPane.add(loanLab, gc);
         
         gc.gridx = 1;
-        gc.gridy = 6;
+        gc.gridy = 7;
         centerPane.add(loan, gc);
         
         gc.gridx = 0;
-        gc.gridy = 7;
+        gc.gridy = 8;
         centerPane.add(totalLab, gc);
         
         gc.gridx = 1;
-        gc.gridy = 7;
+        gc.gridy = 8;
         centerPane.add(total, gc);
         
         bottomPane.add(okBtn);
@@ -190,5 +203,28 @@ public class Details extends JFrame
         //Add panels to container
         contain.add(centerPane, BorderLayout.CENTER);
         contain.add(bottomPane, BorderLayout.SOUTH);
+        
+        okBtn.addActionListener(new handler());
+    }
+    
+    public class handler implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent evt)
+        {
+            if(evt.getSource() == okBtn)
+            {
+                if(come == 1)
+                {
+                    dispose();
+                    new SAMenu();
+                }
+                
+                else if(come == 2)
+                {
+                    dispose();
+                }
+            }
+        }
     }
 }

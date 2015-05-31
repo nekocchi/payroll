@@ -278,7 +278,7 @@ public class Calculate extends JFrame{
                 dispose();
                 
                 //DetailFrame
-                new Details(Driver.records.get(Driver.records.size() - 1));
+                new Details(Driver.records.get(Driver.records.size() - 1), 1);
             }
             
             else
